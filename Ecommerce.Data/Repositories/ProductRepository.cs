@@ -46,6 +46,8 @@ namespace Ecommerce.Data.Repositories
 
         public Product GetById(int Id)
         {
+            if (Id == 0) return null;
+
             return _context
                 .Products
                 .Where(prod => prod.Id == Id)
@@ -80,12 +82,20 @@ namespace Ecommerce.Data.Repositories
 
         public Product Update(Product entity)
         {
+            var productToUpdate = GetById(entity.Id);
+            if (productToUpdate == null) return null;
 
-            var productToUpdate = _context.Products.Single(x => x.Id == entity.Id);
+            var category = _context.Categories.Single(x => x.Id == entity.Category.Id);
 
-            _context.Entry(productToUpdate).CurrentValues.SetValues(entity.Id);
+            productToUpdate.Name = entity.Name;
+            productToUpdate.Price = entity.Price;
+            productToUpdate.Description = entity.Description;
+            productToUpdate.Category = category;
+            productToUpdate.PublicationDate = entity.PublicationDate;
+
             _context.SaveChanges();
-            return _context.Products.Single(x => x.Id == entity.Id);
+
+            return productToUpdate;
         }
 
 

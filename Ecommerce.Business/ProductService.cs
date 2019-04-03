@@ -46,7 +46,7 @@ namespace Ecommerce.Business
         }
 
 
-        public ProductModel CreateProduct (ProductModel productC)
+        public ProductModel CreateProduct(ProductModel productC)
         {
             Product newProduct = new Product
             {
@@ -67,7 +67,7 @@ namespace Ecommerce.Business
         {
             var productModelList = new List<ProductModel>();
 
-            foreach(var prod in _repository.GetAll().Where(prod => prod.Category?.Id == id))
+            foreach (var prod in _repository.GetAll().Where(prod => prod.Category?.Id == id))
             {
                 productModelList.Add(ProductModelBuilder.Create(prod));
             }
@@ -77,19 +77,22 @@ namespace Ecommerce.Business
 
         public ProductModel ModifyProduct(ProductModel productU)
         {
-            Product productToUpdate = _repository.GetById(productU.id);
-            if (productToUpdate == null)
+            if (_repository.GetById(productU.id) == null)
             {
                 throw new ArgumentException("Le produit est introuvable.");
             }
-            else
+
+            var productToUpdate = new Product
             {
-                productToUpdate.Name = productU.name;
-                productToUpdate.Price = productU.price;
-                productToUpdate.PublicationDate = DateTime.Now;
-                productToUpdate.Description = productU.description;
-            }
-            return ProductModelBuilder.Create(_repository.Update(productToUpdate));           
+                Id = productU.id,
+                Name = productU.name,
+                Price = productU.price,
+                PublicationDate = DateTime.Now,
+                Description = productU.description,
+                Category = new Category { Id = productU.categoryId }
+            };
+
+            return ProductModelBuilder.Create(_repository.Update(productToUpdate));
         }
 
         public List<ProductModel> GetAllProducts()
@@ -102,7 +105,7 @@ namespace Ecommerce.Business
             }
 
             return productModelList;
-        }    
-        
+        }
+
     }
 }

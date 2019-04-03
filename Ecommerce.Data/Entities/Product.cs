@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ecommerce.Entities
 {
@@ -9,7 +10,6 @@ namespace Ecommerce.Entities
         public string Description { get; set; }
         public decimal Price { get; set; }
         public DateTime PublicationDate { get; set; }
-
         public virtual Category Category { get; set; }
     }
 }

@@ -81,7 +81,17 @@ namespace Ecommerce.Data.Repositories
 
         public Category Update(Category entity)
         {
-            throw new NotImplementedException();
+            var categoryToUpdate = GetById(entity.Id);
+            if (categoryToUpdate == null) return null;
+
+            var category = _context.Categories.Single(x => x.Id == entity.ParentCategory.Id);
+
+            categoryToUpdate.Name = entity.Name;
+            categoryToUpdate.ParentCategory = category;
+
+            _context.SaveChanges();
+
+            return categoryToUpdate;
         }
     }
 }

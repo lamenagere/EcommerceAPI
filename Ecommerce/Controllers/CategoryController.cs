@@ -82,8 +82,16 @@ namespace Ecommerce.Controllers
         /// <param name="value"></param>
         [HttpPut]
         [Route("{id}")]
-        public void Put(int id, [FromBody]CategoryModel value)
+        public IHttpActionResult Put(int id, [FromBody]CategoryModel category)
         {
+            try
+            {
+                return Ok(_service.UpdateCategory(category));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE: api/Category/5

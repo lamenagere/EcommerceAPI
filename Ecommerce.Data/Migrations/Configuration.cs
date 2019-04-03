@@ -21,13 +21,13 @@ namespace Ecommerce.Data.Migrations
             context.Database.ExecuteSqlCommand("DELETE FROM [Categories]");
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [Categories] NOCHECK CONSTRAINT ALL");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Categories', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Categories', RESEED, 1)");
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [Categories] CHECK CONSTRAINT ALL");
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [Products] NOCHECK CONSTRAINT ALL");
 
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Products', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Products', RESEED, 1)");
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [Products] CHECK CONSTRAINT ALL");
 
@@ -88,7 +88,7 @@ namespace Ecommerce.Data.Migrations
 
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [ShoppingProducts] NOCHECK CONSTRAINT ALL");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('ShoppingProducts', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('ShoppingProducts', RESEED, 1)");
             context.Database.ExecuteSqlCommand("ALTER TABLE [ShoppingProducts] CHECK CONSTRAINT ALL");
 
 

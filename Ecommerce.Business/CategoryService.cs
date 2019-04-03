@@ -82,5 +82,19 @@ namespace Ecommerce.Business
 
             _repository.Delete(category);
         }
+
+        public object UpdateCategory(CategoryModel category)
+        {
+            if (_repository.GetById(category.id) == null) throw new ArgumentNullException();
+
+            var categoryToUpdate = new Category()
+            {
+                Id = category.id,
+                Name = category.name,
+                ParentCategory = new Category() { Id = category.parentCategoryId }
+            };
+
+            return CategoryModelBuilder.CreateWithoutDependancy(_repository.Update(categoryToUpdate));
+        }
     }
 }

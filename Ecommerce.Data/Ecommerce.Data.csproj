@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201903251559106_Reset_Base.Designer.cs">
       <DependentUpon>201903251559106_Reset_Base.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904021026217_Changement_des_Index_de_Seed.cs" />
+    <Compile Include="Migrations\201904021026217_Changement_des_Index_de_Seed.Designer.cs">
+      <DependentUpon>201904021026217_Changement_des_Index_de_Seed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -85,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903251559106_Reset_Base.resx">
       <DependentUpon>201903251559106_Reset_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904021026217_Changement_des_Index_de_Seed.resx">
+      <DependentUpon>201904021026217_Changement_des_Index_de_Seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
