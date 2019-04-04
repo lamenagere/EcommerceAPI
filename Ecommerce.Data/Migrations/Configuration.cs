@@ -1,5 +1,6 @@
 namespace Ecommerce.Data.Migrations
 {
+    using Ecommerce.Data.Entities;
     using Ecommerce.Entities;
     using System;
     using System.Data.Entity;
@@ -15,23 +16,33 @@ namespace Ecommerce.Data.Migrations
 
         protected override void Seed(Ecommerce.Data.EcommerceContext context)
         {
+            context.Database.ExecuteSqlCommand("ALTER TABLE [UserDetails] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Accounts] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Categories] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Products] NOCHECK CONSTRAINT ALL");
+
+
             context.Database.ExecuteSqlCommand("DELETE FROM [ShoppingProducts]");
 
             context.Database.ExecuteSqlCommand("DELETE FROM [Products]");
             context.Database.ExecuteSqlCommand("DELETE FROM [Categories]");
 
-            context.Database.ExecuteSqlCommand("ALTER TABLE [Categories] NOCHECK CONSTRAINT ALL");
             context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Categories', RESEED, 1)");
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [Categories] CHECK CONSTRAINT ALL");
 
-            context.Database.ExecuteSqlCommand("ALTER TABLE [Products] NOCHECK CONSTRAINT ALL");
 
             context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Products', RESEED, 1)");
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [Products] CHECK CONSTRAINT ALL");
 
             
+            context.Database.ExecuteSqlCommand("DELETE FROM [UserDetails]");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('UserDetails', RESEED, 1)");
+
+            
+            context.Database.ExecuteSqlCommand("DELETE FROM [Accounts]");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Accounts', RESEED, 1)");
 
 
             // Principales catégories
@@ -85,6 +96,47 @@ namespace Ecommerce.Data.Migrations
                 PublicationDate = DateTime.Now,
                 Category = context.Categories.First(x => x.Name == "Dell")
             });
+
+            #region Users
+            var adminDetails = context.UserDetails.Add(new UserDetails()
+            {
+                CompanyName = "Lambda",
+                CreationDate = DateTime.Now,
+                Email = "nicolassargos@hotmail.com",
+                FirstName = "Nicolas",
+                Name = "Sargos",
+                Phone = "+3247359884"
+            });
+
+            var userDetails = context.UserDetails.Add(new UserDetails()
+            {
+                CompanyName = "none",
+                CreationDate = DateTime.Now,
+                Email = "nicolassargos@hotmail.com",
+                FirstName = "Nicolas",
+                Name = "Sargos",
+                Phone = "+3247359884"
+            });
+
+            var userAdmin = context.Accounts.Add(new Account()
+            {
+                Password = "admin",
+                UserName = "admin",
+                Role = "Admin",
+                Details = adminDetails
+            });
+
+            var userLambda = context.Accounts.Add(new Account()
+            {
+                Password = "atan",
+                UserName = "john",
+                Role = "Customer",
+                Details = userDetails
+            });
+
+            context.SaveChanges();
+            #endregion
+
 
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [ShoppingProducts] NOCHECK CONSTRAINT ALL");

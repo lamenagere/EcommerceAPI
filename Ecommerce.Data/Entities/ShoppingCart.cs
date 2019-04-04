@@ -8,7 +8,7 @@ namespace Ecommerce.Data.Entities
         public int Id { get; set; }
         public DateTime Date { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual Account User { get; set; }
         public virtual ICollection<ShoppingProduct> ShoppingProducts { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Ecommerce.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<ShoppingProduct> ShoppingProducts { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
     }
 }

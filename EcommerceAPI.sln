@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Common", "Ecommer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Data", "Ecommerce.Data\Ecommerce.Data.csproj", "{60DAAE55-8267-48C3-AB25-BA05C66386CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Authentication", "Ecommerce.Authentication\Ecommerce.Authentication.csproj", "{D09CF568-D216-444D-9A55-311353FBC1A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{60DAAE55-8267-48C3-AB25-BA05C66386CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60DAAE55-8267-48C3-AB25-BA05C66386CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60DAAE55-8267-48C3-AB25-BA05C66386CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09CF568-D216-444D-9A55-311353FBC1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09CF568-D216-444D-9A55-311353FBC1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09CF568-D216-444D-9A55-311353FBC1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09CF568-D216-444D-9A55-311353FBC1A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
