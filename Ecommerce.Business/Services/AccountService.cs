@@ -30,5 +30,41 @@ namespace Ecommerce.Business.Services
 
             return AccountModelBuilder.Create(account);
         }
+
+        public AccountModel GetUser (string credentials)
+        {
+            var decryptedCredentials = Convert.FromBase64String(credentials);
+
+            Encoding encoding = Encoding.ASCII;
+            encoding = (Encoding)encoding.Clone();
+
+            encoding.DecoderFallback = DecoderFallback.ExceptionFallback;
+            string decodedCredentials;
+
+            try
+            {
+                decodedCredentials = encoding.GetString(decryptedCredentials);
+            }
+            catch (DecoderFallbackException)
+            {
+                return null;
+            }
+
+            int colonIndex = decodedCredentials.IndexOf(':');
+
+            if (colonIndex == -1)
+            {
+                return null;
+            }
+
+            string userName = decodedCredentials.Substring(0, colonIndex);
+            string password = decodedCredentials.Substring(colonIndex + 1);
+
+            var account = _repository.GetByCredentials(userName, password);
+
+            if (account == null) throw new ArgumentException("This user does not exist or the password is incorrect");
+
+            return AccountModelBuilder.Create(account);
+        }
     }
 }
