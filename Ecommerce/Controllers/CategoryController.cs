@@ -11,8 +11,7 @@ using System.Web.Http.Cors;
 
 namespace Ecommerce.Controllers
 {
-    [IdentityBasicAuthentication]
-    [Authorize]
+    
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/category")]
     public class CategoryController : ApiController
@@ -67,6 +66,8 @@ namespace Ecommerce.Controllers
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
+        [IdentityBasicAuthentication]
+        [Authorize]
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post([FromBody]CategoryModel category)
@@ -80,6 +81,8 @@ namespace Ecommerce.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
+        [IdentityBasicAuthentication]
+        [Authorize]
         [HttpPut]
         [Route("{id}")]
         public IHttpActionResult Put(int id, [FromBody]CategoryModel category)
@@ -100,6 +103,8 @@ namespace Ecommerce.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [IdentityBasicAuthentication]
+        [Authorize]
         [HttpDelete]
         [Route("{id}")]
         public IHttpActionResult Delete(int id)
