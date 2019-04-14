@@ -11,7 +11,7 @@ namespace Ecommerce.Data
     {
         public EcommerceContext() : base("name=EcommerceContext")
         {
-
+            
         }
 
         public DbSet<Product> Products { get; set; }

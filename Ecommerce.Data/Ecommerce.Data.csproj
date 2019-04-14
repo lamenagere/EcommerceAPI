@@ -87,6 +87,7 @@
     <Compile Include="Entities\ShoppingProduct.cs" />
     <Compile Include="Repositories\ShoppingCartRepository.cs" />
     <Compile Include="Repositories\ShoppingProductRepository.cs" />
+    <Compile Include="Repositories\UserDetailsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ecommerce.Common\Ecommerce.Common.csproj">

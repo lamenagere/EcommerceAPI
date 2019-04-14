@@ -38,7 +38,9 @@ namespace Ecommerce.Data.Repositories
 
         public Account GetById(int id)
         {
-            throw new NotImplementedException();
+            var account = _context.Accounts.Include("Details").Single(acc => acc.Id == id);
+
+            return account;
         }
 
         public Account GetByName(string name)
