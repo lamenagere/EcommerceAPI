@@ -77,13 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryService.cs" />
+    <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Helpers\AccountModelBuilder.cs" />
     <Compile Include="Helpers\ShoppingCartModelBuilder.cs" />
     <Compile Include="Helpers\ShoppingProductModelBuilder.cs" />
     <Compile Include="Helpers\CategoryModelBuilder.cs" />
     <Compile Include="Helpers\ProductModelBuilder.cs" />
-    <Compile Include="ProductService.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\ShoppingService.cs" />
